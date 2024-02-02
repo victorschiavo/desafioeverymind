@@ -1,0 +1,25 @@
+<template>
+    <h1 style="text-align:center;font-weight:bold">Lista de Produtos</h1>
+    <lightning-button variant="brand" label="Criar Produto"  onclick={criarProduto}></lightning-button>
+    <table>
+        <tr>
+            <th>Nome do Produto</th>
+            <th>Código do Produto</th>
+            <th>Descrição do Produto</th>
+            <th>Preço do Produto</th>
+        </tr>
+    
+    <template for:each={produtolista} for:item="produto">
+        <tr key={produto.Id}>
+            <td>{produto.Name}</td>
+            <td>{produto.CodigoProduto__c}</td>
+            <td>{produto.DescricaoProduto__c}</td>
+            <td>{produto.PrecoProduto__c}</td>
+            <td>
+                <lightning-icon size="x-small" variant="error" data-contactid={produto.Id} icon-name="utility:delete" alternative-text="Delete" title="Delete">
+                </lightning-icon>
+            </td>
+        </tr>
+     </template>
+</table>    
+</template>
