@@ -9,4 +9,17 @@ public with sharing class ProdutoController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    @AuraEnabled
+    public static void deletarProdutos(List<Produto__c> produtoLista) {
+        delete produtoLista;
+    }
+
+    @AuraEnabled
+    public static void criarProduto(String nomeProduto, String descricaoProduto, Double precoProduto) {
+        Produto__c produto = new Produto__c(Name = nomeProduto, DescricaoProduto__c = descricaoProduto, PrecoProduto__c = precoProduto);
+        System.debug('#### Produto: ' + produto);
+        insert produto;
+    }
+
 }
